@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lagos Youth Storytelling Challenge - Social Media Strategy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #0f0f0f;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 15% 20%, rgba(255, 20, 147, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(0, 191, 255, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.2) 0%, transparent 50%),
+                linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+            pointer-events: none;
+        }
+
+        .slide-content {
+            max-width: 1400px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            border-radius: 32px;
+            padding: 4rem;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .slide-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff1493, #00bfff, #8a2be2, #ff6347);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .slide-subtitle {
+            font-size: 1.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(145deg, rgba(255, 20, 147, 0.15), rgba(0, 191, 255, 0.15));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(255, 20, 147, 0.3);
+        }
+
+        .metric-card:hover::before {
+            left: 100%;
+        }
+
+        .metric-number {
+            font-size: 4rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ff1493, #00bfff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .metric-label {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .phase-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .phase-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff1493, #00bfff, #8a2be2);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .phase-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .phase-number {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff1493, #00bfff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+        }
+
+        .phase-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .phase-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .phase-highlights {
+            list-style: none;
+            text-align: left;
+        }
+
+        .phase-highlights li {
+            padding: 0.8rem 0;
+            color: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .phase-highlights li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            color: #ff1493;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .platform-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 20, 147, 0.1) 0%, transparent 70%);
+            transition: all 0.4s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 20, 147, 0.3);
+        }
+
+        .platform-card:hover::after {
+            width: 200px;
+            height: 200px;
+        }
+
+        .platform-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            position: relative;
+            z-index: 2;
+        }
+
+        .platform-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .platform-stats {
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 2;
+        }
+
+        .celebrity-showcase {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff6b6b 100%);
+            margin: 4rem 0;
+            padding: 4rem;
+            border-radius: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .celebrity-showcase::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.1));
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .celebrity-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .celebrity-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .celebrity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .celebrity-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .celebrity-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .celebrity-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .celebrity-role {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .impact-metrics {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 4rem;
+            border-radius: 28px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .impact-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 3rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .impact-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .impact-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #00bfff;
+            margin-bottom: 1rem;
+        }
+
+        .impact-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            padding: 5rem 4rem;
+            border-radius: 32px;
+            margin-top: 4rem;
+            text-align: center;
+            color: #1a1a1a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+        }
+
+        .cta-description {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .cta-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .benefit-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem 4rem;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 20px 45px rgba(102, 126, 234, 0.6);
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            z-index: 1000;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 3rem;
+            }
+            
+            .slide-content {
+                padding: 2.5rem;
+            }
+            
+            .hero-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .phase-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Hero -->
+    <div class="slide" id="slide-1">
+        <div class="slide-content">
+            <h1 class="slide-title">Nigeria's Most Viral Youth Campaign</h1>
+            <p class="slide-subtitle">50+ Million Impressions • Celebrity Endorsements • Trending #1 Nationally</p>
+            
+            <div class="hero-metrics">
+                <div class="metric-card">
+                    <span class="metric-number">50M+</span>
+                    <span class="metric-label">Total Impressions</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">1M+</span>
+                    <span class="metric-label">Social Followers</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">#1</span>
+                    <span class="metric-label">Trending Nigeria</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">25%</span>
+                    <span class="metric-label">Engagement Rate</span>
+                </div>
+            </div>
+            
+            <p style="font-size: 1.4rem; color: rgba(255, 255, 255, 0.8); margin-top: 3rem; font-weight: 400; line-height: 1.7;">
+                <strong>#LagosStoriesLiveOn</strong> will dominate Nigerian social media for 6 months straight. Your brand will be embedded in the most talked-about youth cultural movement in Africa's history.
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Campaign Phases -->
+    <div class="slide" id="slide-2">
+        <div class="slide-content">
+            <h2 class="slide-title">5-Phase Viral Campaign Strategy</h2>
+            <p class="slide-subtitle">From Mystery to Global Recognition</p>
+            
+            <div class="phase-container">
+                <div class="phase-card">
+                    <div class="phase-number">1</div>
+                    <h3 class="phase-title">Pre-Launch Hype</h3>
+                    <p class="phase-description">Celebrity ambassadors create mystery and anticipation across Lagos</p>
+                    <ul class="phase-highlights">
+                        <li>Burna Boy, Wizkid, Genevieve Nnaji activation</li>
+                        <li>Cryptic countdown posts and QR codes</li>
+                        <li>"School vs School" anticipation battles</li>
+                        <li>Celebrity childhood Lagos stories</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">2</div>
+                    <h3 class="phase-title">Launch Explosion</h3>
+                    <p class="phase-description">Simultaneous multi-platform launch with celebrity coordination</p>
+                    <ul class="phase-highlights">
+                        <li>Live countdown with all ambassadors</li>
+                        <li>AR filters featuring Lagos landmarks</li>
+                        <li>Government officials live-tweeting</li>
+                        <li>YouTube documentary premiere</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">3</div>
+                    <h3 class="phase-title">Participation Momentum</h3>
+                    <p class="phase-description">Daily engagement tactics driving 200,000+ submissions</p>
+                    <ul class="phase-highlights">
+                        <li>Monday Motivation with celebrity tips</li>
+                        <li>Tuesday student takeovers</li>
+                        <li>Wednesday Nollywood workshops</li>
+                        <li>District vs District competitions</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">4</div>
+                    <h3 class="phase-title">Evaluation Build-Up</h3>
+                    <p class="phase-description">Suspense building and community prediction campaigns</p>
+                    <ul class="phase-highlights">
+                        <li>Daily countdown content</li>
+                        <li>Judge deliberation behind-the-scenes</li>
+                        <li>Public voting campaigns</li>
+                        <li>Student transformation stories</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card">
+                    <div class="phase-number">5</div>
+                    <h3 class="phase-title">Grand Finale</h3>
+                    <p class="phase-description">Presidential ceremony with global broadcast reach</p>
+                    <ul class="phase-highlights">
+                        <li>Multi-platform live streaming</li>
+                        <li>Celebrity-hosted segments</li>
+                        <li>Winner announcement strategy</li>
+                        <li>Post-event viral content</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Platform Strategy -->
+    <div class="slide" id="slide-3">
+        <div class="slide-content">
+            <h2 class="slide-title">Multi-Platform Domination</h2>
+            <p class="slide-subtitle">Tailored Content for Maximum Reach & Engagement</p>
+            
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-icon">📱</div>
+                    <h3 class="platform-name">TikTok</h3>
+                    <div class="platform-stats">
+                        <strong>Youth-First Approach</strong><br>
+                        Quick story excerpts, dance challenges<br>
+                        Celebrity duets, transformation videos<br>
+                        <em>Target: 20M+ views</em>
+                    </div>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">📸</div>
+                    <h3 class="platform-name">Instagram</h3>
+                    <div class="platform-stats">
+                        <strong>Visual Storytelling</strong><br>
+                        Aesthetic quote cards, IGTV docs<br>
+                        Story highlights, live sessions<br>
+                        <em>Target: 15M+ impressions</em>
+                    </div>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">🐦</div>
+                    <h3 class="platform-name">Twitter/X</h3>
+                    <div class="platform-stats">
+                        <strong>Real-Time Engagement</strong><br>
+                        Live-tweeting, thread competitions<br>
+                        Trending hashtag campaigns<br>
+                        <em>Target: #1 trending Nigeria</em>
+                    </div>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">📺</div>
+                    <h3 class="platform-name">YouTube</h3>
+                    <div class="platform-stats">
+                        <strong>Long-Form Content</strong><br>
+                        Documentary series, masterclasses<br>
+                        Celebrity mentor sessions<br>
+                        <em>Target: 10M+ watch hours</em>
+                    </div>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">💬</div>
+                    <h3 class="platform-name">WhatsApp</h3>
+                    <div class="platform-stats">
+                        <strong>Community Building</strong><br>
+                        School group broadcasts<br>
+                        Teacher resource sharing<br>
+                        <em>Target: 50K+ active groups</em>
+                    </div>
+                </div>
+                
+                <div class="platform-card">
+                    <div class="platform-icon">👥</div>
+                    <h3 class="platform-name">Facebook</h3>
+                    <div class="platform-stats">
+                        <strong>Family Engagement</strong><br>
+                        Parent groups, live streaming<br>
+                        Alumni storyteller showcases<br>
+                        <em>Target: 5M+ family reach</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Celebrity Power -->
+    <div class="slide" id="slide-4">
+        <div class="slide-content">
+            <div class="celebrity-showcase">
+                <div class="celebrity-content">
+                    <h2 class="celebrity-title">A-List Celebrity Army</h2>
+                    <p style="font-size: 1.4rem; margin-bottom: 2rem; opacity: 0.9;">
+                        Nigeria's biggest stars committed to driving viral engagement
+                    </p>
+                    
+                    <div class="celebrity-grid">
+                        <div class="celebrity-card">
+                            <div class="celebrity-name">Burna Boy</div>
+                            <div class="celebrity-role">Grammy Winner • 40M+ followers</div>
+                        </div>
+                        
+                        <div class="celebrity-card">
+                            <div class="celebrity-name">Wizkid</div>
+                            <div class="celebrity-role">Global Superstar • 30M+ followers</div>
+                        </div>
+                        
+                        <div class="celebrity-card">
+                            <div class="celebrity-name">Genevieve Nnaji</div>
+                            <div class="celebrity-role">Nollywood Icon • 25M+ followers</div>
+                        </div>
+                        
+                        <div class="celebrity-card">
+                            <div class="celebrity-name">Don Jazzy</div>
+                            <div class="celebrity-role">Music Mogul • 20M+ followers</div>
+                        </div>
+                        
+                        <div class="celebrity-card">
+                            <div class="celebrity-name">Funke Akindele</div>
+                            <div class="celebrity-role">Comedy Queen • 15M+ followers</div>
+                        </div>
+                        
+                        <div class="celebrity-card">
+                            <div class="celebrity-name">Basketmouth</div>
+                            <div class="celebrity-role">Comedy Legend • 10M+ followers</div>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 1.3rem; margin-top: 3rem; opacity: 0.9;">
+                        <strong>Combined Reach: 140+ Million Followers</strong><br>
+                        Guaranteed viral amplification and authentic storytelling
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Viral Mechanics -->
+    <div class="slide" id="slide-5">
+        <div class="slide-content">
+            <h2 class="slide-title">Viral Growth Mechanisms</h2>
+            <p class="slide-subtitle">Engineered for Maximum Amplification</p>
+            
+            <div class="phase-container">
+                <div class="phase-card">
+                    <h3 class="phase-title">Hashtag Engineering</h3>
+                    <p class="phase-description">Strategic hashtag ecosystem designed for trending dominance</p>
+                    <ul class="phase-highlights">
+                        <li><strong>#LagosStoriesLiveOn</strong> - Primary campaign driver</li>
+                        <li><strong>#MyLagosStory</strong> - Personal narrative catalyst</li>
+                        <li><strong>#200KVoices</strong> - Scale demonstration</li>
+                        <li>Daily themed hashtags for sustained engagement</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card">
+                    <h3 class="phase-title">Cross-Platform Synergy</h3>
+                    <p class="phase-description">Seamless content flow maximizing reach across platforms</p>
+                    <ul class="phase-highlights">
+                        <li>Instagram Stories → TikTok challenges</li>
+                        <li>Twitter threads → YouTube videos</li>
+                        <li>WhatsApp exclusive content</li>
+                        <li>Platform-specific rewards</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card">
+                    <h3 class="phase-title">Community Amplification</h3>
+                    <p class="phase-description">Leveraging networks for exponential reach multiplication</p>
+                    <ul class="phase-highlights">
+                        <li>School official account partnerships</li>
+                        <li>Parent and family involvement campaigns</li>
+                        <li>Local government coordination</li>
+                        <li>Media outlet collaboration</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card">
+                    <h3 class="phase-title">Interactive Challenges</h3>
+                    <p class="phase-description">User-generated content driving organic engagement</p>
+                    <ul class="phase-highlights">
+                        <li>#MyLagosIn3Words viral challenge</li>
+                        <li>60-second TikTok story battles</li>
+                        <li>Instagram story polls for plot decisions</li>
+                        <li>District vs District competitions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Impact Metrics -->
+    <div class="slide" id="slide-6">
+        <div class="slide-content">
+            <div class="impact-metrics">
+                <h2 class="impact-title">Guaranteed Impact Metrics</h2>
+                
+                <div class="metrics-grid">
+                    <div class="impact-card">
+                        <div class="impact-number">50M+</div>
+                        <div class="impact-label">Total Impressions</div>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <div class="impact-number">25%</div>
+                        <div class="impact-label">Engagement Rate</div>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <div class="impact-number">#1</div>
+                        <div class="impact-label">Trending Nigeria</div>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <div class="impact-number">1M+</div>
+                        <div class="impact-label">New Followers</div>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <div class="impact-number">200K+</div>
+                        <div class="impact-label">User-Generated Posts</div>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <div class="impact-number">₦400M+</div>
+                        <div class="impact-label">Earned Media Value</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 4rem; text-align: center;">
+                <h3 style="font-size: 2.5rem; margin-bottom: 2rem;">Your Brand Benefits</h3>
+                
+                <div class="phase-container">
+                    <div class="phase-card">
+                        <h3 class="phase-title">🎯 Brand Integration</h3>
+                        <p class="phase-description">Seamless incorporation into viral content streams</p>
+                        <ul class="phase-highlights">
+                            <li>Celebrity endorsement integration</li>
+                            <li>Platform-specific brand activations</li>
+                            <li>Hashtag co-branding opportunities</li>
+                            <li>User-generated content featuring your brand</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <h3 class="phase-title">📊 Real-Time Analytics</h3>
+                        <p class="phase-description">Live tracking of brand mention and engagement metrics</p>
+                        <ul class="phase-highlights">
+                            <li>24/7 social listening dashboard</li>
+                            <li>Brand sentiment analysis</li>
+                            <li>Engagement attribution tracking</li>
+                            <li>Competitive positioning reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="phase-card">
+                        <h3 class="phase-title">🌟 Exclusive Access</h3>
+                        <p class="phase-description">Behind-the-scenes content and celebrity collaboration rights</p>
+                        <ul class="phase-highlights">
+                            <li>Celebrity content creation sessions</li>
+                            <li>Exclusive social media takeovers</li>
+                            <li>VIP event live streaming rights</li>
+                            <li>Alumni network ongoing engagement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Call to Action -->
+    <div class="slide" id="slide-7">
+        <div class="slide-content">
+            <div class="cta-section">
+                <h3 class="cta-title">Dominate Nigerian Social Media</h3>
+                <p class="cta-description">
+                    Join the most viral youth campaign in African history. Your brand will be embedded in every conversation about Lagos, youth, and creativity for 6+ months.
+                </p>
+                
+                <div class="cta-benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-title">Celebrity Partnerships</div>
+                        <div>Direct collaboration with A-list Nigerian stars</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">Viral Content Integration</div>
+                        <div>Your brand woven into trending content streams</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">Real-Time Optimization</div>
+                        <div>Daily strategy adjustments for maximum impact</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-title">Legacy Content</div>
+                        <div>Permanent association with cultural movement</div>
+                    </div>
+                </div>
+                
+                <a href="#contact" class="cta-button">Secure Viral Partnership</a>
+                
+                <div style="margin-top: 3rem; font-size: 1.1rem; opacity: 0.8;">
+                    <strong>Limited Spots Available</strong><br>
+                    First 3 sponsors get exclusive celebrity collaboration rights
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / 7
+    </div>
+    
+    <div class="navigation">
+        <button class="nav-button" onclick="previousSlide()">‹</button>
+        <button class="nav-button" onclick="nextSlide()">›</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 7;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.style.display = 'none');
+            
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+            
+            document.getElementById(`slide-${currentSlide}`).style.display = 'flex';
+            document.getElementById('current-slide').textContent = currentSlide;
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        // Initialize
+        showSlide(1);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                previousSlide();
+            }
+        });
+
+        // Add entrance animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.metric-card, .phase-card, .platform-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
